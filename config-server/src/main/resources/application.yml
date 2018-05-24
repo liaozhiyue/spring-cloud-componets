@@ -1,0 +1,29 @@
+spring:
+  application:
+    name: config-service
+  cloud:
+    config:
+      server:
+        native:
+          search-locations: ./
+  profiles:
+    active: native
+
+
+server:
+  port: 8711
+
+management:
+  security:
+    enabled: false
+
+eureka:
+  instance:
+    lease-expiration-duration-in-seconds:  90 # 续约更新时间间隔（默认30秒）
+    lease-renewal-interval-in-seconds: 30 # 续约到期时间（默认90秒）
+    prefer-ip-address: false
+  client:
+    service-url:
+      defaultZone: http://localhost:8701/eureka/
+    healthcheck:
+      enabled: true
